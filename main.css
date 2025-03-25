@@ -42,3 +42,11 @@ body {
 .info-div {
     margin-bottom: 60px;
 }
+
+a {
+    color: #B0B0B0;
+}
+
+a:hover {
+    color: #FFD700;
+}
