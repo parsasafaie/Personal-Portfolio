@@ -12,6 +12,11 @@ body {
     margin-top: 0;
 }
 
+.part-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
 .mini-title {
     color: #E0E0E0;
     font-size: 50px;
@@ -25,4 +30,10 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+}
+
+.info {
+    font-size: 18px;
+    color: #B0B0B0;
+    line-height: 1;
 }
