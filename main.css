@@ -1,0 +1,27 @@
+body {
+    background-color: #121212;
+    color: #E0E0E0;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.title {
+    color: #E0E0E0;
+    font-size: 6vw;
+    margin-bottom: 0;
+}
+
+.mini-title {
+    color: #E0E0E0;
+    font-size: 2vw;
+}
+
+.intro-hello {
+    height: 60vh;
+    text-align: center;
+    background: linear-gradient(135deg, #2E3B4E, #1C1F2B);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
