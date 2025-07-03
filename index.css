@@ -1,6 +1,26 @@
+:root {
+  --primary-color: #4ECDC4;
+  --primary-dark: #3aa8a1;
+  --primary-light: rgba(78, 205, 196, 0.1);
+  --secondary-color: #FF6B6B;
+  --accent-color: #FFBE0B;
+  --dark-bg: #121212;
+  --dark-gray: #1E1E1E;
+  --medium-gray: #2C2C2C;
+  --light-gray: #E0E0E0;
+  --lighter-gray: #F5F5F5;
+  --white: #FFFFFF;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.3);
+  --transition: all 0.3s ease-in-out;
+  --border-radius: 12px;
+  --border-radius-lg: 16px;
+  --border-radius-sm: 8px;
+}
+
 body {
-    background: linear-gradient(180deg, #000000, #FFFFFF);
-    color: #E0E0E0;
+    background: var(--dark-gray);
+    color: var(--light-gray);
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
@@ -28,21 +48,21 @@ body {
 }
 
 .title {
-    color: #E0E0E0;
+    color: var(--primary-color);
     font-size:  clamp(80px, 6vw, 180px);
     margin-bottom: 0;
     margin-top: 0;
 }
 
 .mini-title {
-    color: #E0E0E0;
+    color: var(--primary-color);
     font-size:  clamp(30px, 2.5vw, 130px);
     margin-top: 0px;
     margin-bottom: 0px;
 }
 
 .info-div {
-    background-color: #121212;;
+    background-color: var(--dark-bg);;
     margin-bottom: 5vh;
     padding: 3vw;
     transition: all 0.5s ease;
@@ -56,7 +76,7 @@ body {
 .part-title {
     font-size: clamp(20px, 2vw, 40px);
     margin-bottom: 3vh;
-    color: #FFD700;
+    color: var(--secondary-color);
     text-align: center;
     margin-top: 5px;
 }
@@ -64,28 +84,28 @@ body {
 
 .info {
     font-size: clamp(15px, 1vw, 20px);
-    color: #B0B0B0;
+    color: var(--lighter-gray);
     line-height: 3vh;
 }
 
 
 .info-div:hover {
-    transition: all 0.5s ease;
+    transition: var(--transition);
     transform: scale(1.007);
 }
 
 a {
-    color: #B0B0B0;
+    color: var(--light-gray);
     transition: all 0.5s ease;
 }
 
 a:hover {
-    color: #FFD700;
+    color: var(--accent-color);
     transition: all 0.5s ease;
 }
 
 footer {
-    background-color: #000000;
+    background-color: var(--dark-bg);
     margin-bottom: 0px;
     display: flex;
     flex-direction: row;
