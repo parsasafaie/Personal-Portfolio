@@ -1,77 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>PS</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='index.css'>
-</head>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Parsa Safaie</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="intro-hello">
-        <h1 class="title">HELLO</h1>
-        <h3 class="mini-title">IT'S PARSA SAFAIE</h3>
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Hi, I'm <span class="highlight">Parsa Safaie</span></h1>
+      <p class="typewriter" id="typing"></p>
     </div>
-    
+  </header>
 
-    <div class="info-div">
-        <h3 class="part-title" h>Who I am</h3>
-        <p class="info">I'm Parsa Safaie, born on April 26, 2009, in Amiens, France. At 16 years old, I'm originally from Iran and currently living in Mashhad.</p>
-        <p class="info">I am currently in the 10th grade at Shahid Hashemi Nejad School, which is part of the Tizhoshan network of schools. I am studying in the Mathematics-Physics branch, and I plan to pursue a degree in Computer Science at university.</p>
-        <p class="info">At the age of 11, I began working with computers and exploring programming through Small Basic. This simple yet powerful language introduced me to the world of coding, helping me develop my skills and passion for technology.</p>
-    </div>
+  <main>
+    <section class="section about fade-in">
+      <div class="container">
+        <h2>About Me</h2>
+        <p>I'm Parsa Safaie, 16 years old, born in France, raised in Iran, studying Math & Physics, and passionate about programming since age 11.</p>
+      </div>
+    </section>
 
-    <div class="info-div">
-        <h3 class="part-title">Languages I Know</h3>
-        <p class="info">I am proficient in the following programming languages:</p>
-        <p class="info"><strong>Proficient:</strong> Python</p>
-        <p class="info"><strong>Intermediate:</strong> HTML, CSS</p>
-        <p class="info"><strong>Familiar:</strong> C, C++, JavaScript, Java</p>
-    </div>
+    <section class="section languages fade-in">
+      <div class="container">
+        <h2>Languages I Know</h2>
+        <p><strong>Proficient:</strong> Python</p>
+        <p><strong>Intermediate:</strong> HTML, CSS</p>
+        <p><strong>Familiar:</strong> C, C++, JavaScript, Java</p>
+      </div>
+    </section>
 
-    <div class="info-div">
-        <h3 class="part-title">Khwarazmi</h3>
-        <p class="info">The Khwarizmi Youth Festival is a scientific competition held annually to identify and nurture the scientific talents of students across the country.</p>
-        <p class="info">The festival is divided into two sections: the Youth section (for first-cycle high school students) and the Young section (for second-cycle high school students).</p>
-        <p class="info">The goal of this festival is to encourage students to undertake scientific and research projects, so that outstanding talents can be recognized and supported for their future academic paths.</p>
-    </div>
+    <section class="section khwarazmi fade-in">
+      <div class="container">
+        <h2>Khwarazmi Festival</h2>
+        <p>An annual competition for recognizing young scientific talents across Iran. A great platform to innovate and shine.</p>
+      </div>
+    </section>
 
-    <div class="info-div">
-        <h3 class="part-title">My achievements in Khwarazmi</h3>
-        <p class="info">Last year, when we were in the 9th grade in the first cycle of high school, I participated in the Khwarizmi Youth Festival with my friend , <a href="https://github.com/mhafzali">Mohammad Hessam Afzali</a> , and achieved the national rank of 2nd in the programming category, specifically in the subcategory of application programs.</p>
-        <p class="info">Our project was called BUFFET, and its goal was to smarten up school cafeterias.</p>
-        <p class="info">BUFFET app published in github. See it <a href="https://github.com/BuffetProgram/Buffet">here</a>!</p>
-        <p class="info">Thanks to J.S. and M.S. for their invaluable help and support throughout our journey.</p>
-    </div>
+    <section class="section achievements fade-in">
+      <div class="container">
+        <h2>Achievements</h2>
+        <p>🏆 2nd place nationally in Khwarizmi Festival (9th grade) with <a href="https://github.com/mhafzali">Mohammad Hessam Afzali</a>.</p>
+        <p>💡 Project: <strong>BUFFET</strong> — smart cafeteria system. <a href="https://github.com/BuffetProgram/Buffet">View on GitHub</a>.</p>
+      </div>
+    </section>
 
-    <div class="info-div">
-        <h3 class="part-title">Today</h3>
-        <p class="info">Currently, I am working on a new, large-scale project called SEPAD with my friend <a href="https://github.com/abolfazlrashidian">Abolfazl Rashidian</a>.</p>
-        <p class="info">The goal of the SEPAD project is to track students' accuracy in online classes and report it to the teacher.</p>
-        <p class="info">SEPAD organization is in github. See it <a href="https://github.com/SEPAD-Project">here</a>!</p>
-    </div>
+    <section class="section project fade-in">
+      <div class="container">
+        <h2>Current Project</h2>
+        <p>📊 Working on <strong>SEPAD</strong> with <a href="https://github.com/abolfazlrashidian">Abolfazl</a>, tracking student focus in online classes.</p>
+        <a href="https://github.com/SEPAD-Project">🔗 GitHub Repo</a>
+      </div>
+    </section>
 
-    <div class="info-div">
-        <h3 class="part-title">Plans for Future</h3>
-        <p class="info">The Khwarizmi Youth Festival, which I am participating in this year, provides valuable points for the national exams. With these points, I plan to study Computer Science at one of the best universities in Iran.</p>
-        <p class="info">Of course, winning in this festival is not enough, and one should not neglect school subjects!</p>
-    </div>
+    <section class="section future fade-in">
+      <div class="container">
+        <h2>Future Plans</h2>
+        <p>I plan to study Computer Science at a top Iranian university using my Khwarazmi achievements and strong academic background.</p>
+      </div>
+    </section>
 
-    <div class="info-div">
-        <h3 class="part-title">Contact Me</h3>
-        <p class="info">There are many ways to get in touch:</p><br>
-        <a class="info" href="mailto:parsasafaie.2568@proton.me">Send me an email!</a><br><br>
-        <a class="info" href="https://github.com/parsasafaie">Check out my GitHub!</a><br><br>
-        <a class="info" href="https://t.me/parsasafaie68">Connect with me on Telegram!</a>
-    </div>
-    
-    <footer>
-        <p class="footer-text">&copy; 2025 Parsa Safaie. All rights reserved.</p>
-        <p>Follow me on <a href="https://github.com/parsasafaie" target="_blank">GitHub</a> | <a href="https://www.linkedin.com/in/parsa-safaie-1225aa358/" target="_blank">LinkedIn</a></p>
-    </footer>
+    <section class="section contact fade-in">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <p>📧 <a href="mailto:parsasafaie.2568@proton.me">Email Me</a></p>
+        <p>💻 <a href="https://github.com/parsasafaie">GitHub</a></p>
+        <p>📱 <a href="https://t.me/parsasafaie68">Telegram</a></p>
+      </div>
+    </section>
+  </main>
 
+  <footer>
+    &copy; 2025 Parsa Safaie | <a href="https://github.com/parsasafaie">GitHub</a> | <a href="https://www.linkedin.com/in/parsa-safaie-1225aa358/">LinkedIn</a>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
