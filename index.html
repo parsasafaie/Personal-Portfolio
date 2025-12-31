@@ -1,82 +1,216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Parsa Safaie</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Parsa Safaie — Portfolio</title>
+  <meta name="description" content="Parsa Safaie — Student programmer focused on backend development, computer vision, and applied AI. Projects: BUFFET, SEPAD." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --bg-soft:#111;
+      --text:#f2f2f2;
+      --muted:#b5b5b5;
+      --border:#262626;
+      --accent:#ffffff;
+      --radius:10px;
+      --maxw:1080px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;height:100%}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      line-height:1.7;
+      padding-top:72px;
+    }
+
+    /* Header */
+    header{
+      position:fixed;top:0;left:0;right:0;height:64px;
+      background:rgba(0,0,0,0.85);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      z-index:50;
+    }
+    .nav{max-width:var(--maxw);width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:'Playfair Display', serif;font-weight:700;letter-spacing:.5px}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:500}
+    nav a:hover{color:var(--accent)}
+
+    /* Layout */
+    main{max-width:var(--maxw);margin:40px auto;padding:0 24px}
+    section{margin-bottom:56px}
+
+    .card{
+      background:var(--bg-soft);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:28px;
+    }
+
+    /* Hero */
+    .hero h1{
+      font-family:'Playfair Display', serif;
+      font-size:clamp(1.8rem,3.5vw,2.6rem);
+      margin:0 0 12px;
+    }
+    .hero .name{border-bottom:2px solid var(--accent);padding-bottom:2px}
+    .lead{color:var(--muted);max-width:720px}
+
+    .meta{margin-top:18px;display:flex;gap:16px;flex-wrap:wrap}
+    .tag{border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:.85rem;color:var(--muted)}
+
+    /* Two column */
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+
+    h2{
+      font-family:'Playfair Display', serif;
+      font-size:1.4rem;
+      margin:0 0 14px;
+    }
+    h3{margin:18px 0 8px;font-size:1rem}
+    p{margin:0 0 12px}
+    ul{margin:0 0 12px 18px;color:var(--muted)}
+
+    /* Skills */
+    .skill{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:8px 0}
+
+    /* Projects */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .project h4{margin:0 0 6px;font-size:1rem}
+    .project p{color:var(--muted);font-size:.95rem}
+
+    /* Contact */
+    a{color:var(--accent)}
+    a:hover{text-decoration:underline}
+
+    footer{
+      border-top:1px solid var(--border);
+      margin-top:60px;
+      padding:24px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="overlay"></div>
-    <div class="hero-text">
-      <h1>Hi, I'm <span class="highlight">Parsa Safaie</span></h1>
-      <p class="typewriter" id="typing"></p>
+
+<header>
+  <div class="nav">
+    <div class="brand">Parsa Safaie</div>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="card">
+      <h1>Hello, I'm <span class="name">Parsa Safaie</span></h1>
+      <p class="lead">
+        I am a 16-year-old student, born in France and raised in Iran, currently studying Mathematics and Physics.
+        I have been programming since the age of 11, with a primary focus on backend development, computer vision,
+        and applied artificial intelligence.
+      </p>
+      <div class="meta">
+        <div class="tag">Python Developer</div>
+        <div class="tag">Computer Vision</div>
+        <div class="tag">Machine Learning</div>
+        <div class="tag">Backend Engineering</div>
+        <div class="tag">Khwarazmi Festival Awardee</div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="section about fade-in">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>I'm Parsa Safaie, 16 years old, born in France, raised in Iran, studying Math & Physics, and passionate about programming since age 11.</p>
+  <section class="grid" id="about">
+    <div class="card">
+      <h2>Profile</h2>
+      <p>
+        I work on projects that combine solid software engineering principles with practical machine learning.
+        My main interests lie in designing clean backend architectures, train lightweight machine learning models,
+        and applying computer vision techniques to real-world problems.
+      </p>
+
+      <h3>Core Competencies</h3>
+      <ul>
+        <li>Backend development with Python (API design, databases, deployment).</li>
+        <li>Image processing and computer vision using Python.</li>
+        <li>Training and evaluating lightweight machine learning models.</li>
+        <li>Basic knowledge of software security and data privacy principles.</li>
+      </ul>
+
+      <h3>Academic & Professional Goals</h3>
+      <p>
+        My short-term goal is to deepen my expertise in computer vision and backend systems
+        through competitive and academic projects.
+        In the long term, I aim to study Computer Science at a leading Iranian university
+        and pursue research in applied artificial intelligence.
+      </p>
+    </div>
+
+    <aside class="card">
+      <h2>Skills</h2>
+      <div class="skill"><span>Python</span><strong>Advanced</strong></div>
+      <div class="skill"><span>Machine Learning</span><strong>Intermediate</strong></div>
+            <div class="skill"><span>Computer Vision</span><strong>Intermediate</strong></div>
+      <div class="skill"><span>HTML / CSS / JavaScript</span><strong>Intermediate</strong></div>
+      <div class="skill"><span>C / C++</span><strong>Familiar</strong></div>
+    </aside>
+  </section>
+
+  <section id="projects">
+    <h2>Projects & Achievements</h2>
+    <div class="projects">
+      <div class="card project">
+        <h4>BUFFET — Smart Cafeteria System</h4>
+        <p>
+          National 2nd Place, Khwarazmi Youth Festival.
+          A backend-driven system for automating cafeteria operations,
+          including inventory management, ordering, and reporting.
+          <br><a href="https://github.com/BuffetProgram/Buffet" target="_blank">View on GitHub</a>
+        </p>
       </div>
-    </section>
 
-    <section class="section languages fade-in">
-      <div class="container">
-        <h2>Languages I Know</h2>
-        <p><strong>Proficient:</strong> Python</p>
-        <p><strong>Intermediate:</strong> HTML, CSS</p>
-        <p><strong>Familiar:</strong> C, C++, JavaScript, Java</p>
+      <div class="card project">
+        <h4>SEPAD — Student Focus Analysis System</h4>
+        <p>
+          Honorable Mention, Khwarazmi Youth Festival.
+          A computer vision–based tool for analyzing student focus during online classes,
+          designed with privacy-preserving local processing.
+          <br><a href="https://github.com/SEPAD-Project" target="_blank">View on GitHub</a>
+        </p>
       </div>
-    </section>
 
-    <section class="section khwarazmi fade-in">
-      <div class="container">
-        <h2>Khwarazmi Festival</h2>
-        <p>An annual competition for recognizing young scientific talents across Iran. A great platform to innovate and shine.</p>
+      <div class="card project">
+        <h4>Independent Experiments</h4>
+        <p>
+          A collection of small-scale projects and experiments in image processing,
+          machine learning, and backend utilities available on my GitHub profile.
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section achievements fade-in">
-      <div class="container">
-        <h2>Achievements</h2>
-        <p>🏆 2nd place nationally in Khwarizmi Festival (9th grade) with <a href="https://github.com/mhafzali">Mohammad Hessam Afzali</a>.</p>
-        <p>💡 Project: <strong>BUFFET</strong> — smart cafeteria system. <a href="https://github.com/BuffetProgram/Buffet">View on GitHub</a>.</p>
-      </div>
-    </section>
+  <section id="contact">
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:parsasafaie.2568@proton.me">parsasafaie.2568@proton.me</a></p>
+      <p>GitHub: <a href="https://github.com/parsasafaie" target="_blank">github.com/parsasafaie</a></p>
+      <p>Telegram: <a href="https://t.me/parsasafaie" target="_blank">@parsasafaie</a></p>
+    </div>
+  </section>
 
-    <section class="section project fade-in">
-      <div class="container">
-        <h2>Current Project</h2>
-        <p>📊 Working on <strong>SEPAD</strong> with <a href="https://github.com/abolfazlrashidian">Abolfazl</a>, tracking student focus in online classes.</p>
-        <a href="https://github.com/SEPAD-Project">🔗 GitHub Repo</a>
-      </div>
-    </section>
+</main>
 
-    <section class="section future fade-in">
-      <div class="container">
-        <h2>Future Plans</h2>
-        <p>I plan to study Computer Science at a top Iranian university using my Khwarazmi achievements and strong academic background.</p>
-      </div>
-    </section>
+<footer>
+  &copy; 2025 Parsa Safaie
+</footer>
 
-    <section class="section contact fade-in">
-      <div class="container">
-        <h2>Contact Me</h2>
-        <p>📧 <a href="mailto:parsasafaie.2568@proton.me">Email Me</a></p>
-        <p>💻 <a href="https://github.com/parsasafaie">GitHub</a></p>
-        <p>📱 <a href="https://t.me/parsasafaie68">Telegram</a></p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Parsa Safaie | <a href="https://github.com/parsasafaie">GitHub</a> | <a href="https://www.linkedin.com/in/parsa-safaie-1225aa358/">LinkedIn</a>
-  </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
