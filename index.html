@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,116 +6,265 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Parsa Safaie — Portfolio</title>
   <meta name="description" content="Parsa Safaie — Student programmer focused on backend development, computer vision, and applied AI. Projects: BUFFET, SEPAD." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0b;
-      --bg-soft:#111;
-      --text:#f2f2f2;
-      --muted:#b5b5b5;
-      --border:#262626;
-      --accent:#ffffff;
-      --radius:10px;
-      --maxw:1080px;
+      --bg:#09090b;
+      --bg-card:#0f0f12;
+      --bg-card-hover:#141418;
+      --text:#ececec;
+      --text-dim:#a1a1aa;
+      --text-faint:#71717a;
+      --border:rgba(255,255,255,0.06);
+      --border-hover:rgba(255,255,255,0.12);
+      --glow:rgba(255,255,255,0.03);
+      --accent:#e8e4dd;
+      --accent-warm:#d4c9b8;
+      --radius:14px;
+      --maxw:1100px;
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;height:100%}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    html,body{height:100%}
     body{
       background:var(--bg);
       color:var(--text);
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      line-height:1.7;
-      padding-top:72px;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;
+      line-height:1.75;
+      font-weight:400;
+      overflow-x:hidden;
+    }
+
+    /* Noise overlay */
+    body::before{
+      content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+      opacity:.035;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size:128px 128px;
+    }
+
+    /* Ambient glow */
+    .ambient{
+      position:fixed;top:-200px;left:50%;transform:translateX(-50%);
+      width:800px;height:600px;
+      background:radial-gradient(ellipse,rgba(255,255,255,0.025) 0%,transparent 70%);
+      pointer-events:none;z-index:0;
     }
 
     /* Header */
     header{
       position:fixed;top:0;left:0;right:0;height:64px;
-      background:rgba(0,0,0,0.85);
+      background:rgba(9,9,11,0.8);
+      backdrop-filter:blur(20px) saturate(1.2);
+      -webkit-backdrop-filter:blur(20px) saturate(1.2);
       border-bottom:1px solid var(--border);
       display:flex;align-items:center;justify-content:center;
-      z-index:50;
+      z-index:100;
     }
-    .nav{max-width:var(--maxw);width:100%;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-    .brand{font-family:'Playfair Display', serif;font-weight:700;letter-spacing:.5px}
-    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:500}
-    nav a:hover{color:var(--accent)}
+    .nav{max-width:var(--maxw);width:100%;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
+    .brand{
+      font-family:'Playfair Display',serif;font-weight:700;
+      font-size:1.05rem;letter-spacing:.3px;color:var(--text);
+    }
+    nav{display:flex;gap:6px}
+    nav a{
+      color:var(--text-faint);text-decoration:none;font-size:.85rem;font-weight:500;
+      padding:6px 14px;border-radius:8px;transition:all .25s ease;
+    }
+    nav a:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+
+    /* Reveal animation */
+    .reveal{
+      opacity:0;transform:translateY(24px);
+      transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal.d1{transition-delay:.08s}
+    .reveal.d2{transition-delay:.16s}
+    .reveal.d3{transition-delay:.24s}
+    .reveal.d4{transition-delay:.32s}
 
     /* Layout */
-    main{max-width:var(--maxw);margin:40px auto;padding:0 24px}
-    section{margin-bottom:56px}
+    main{
+      max-width:var(--maxw);margin:0 auto;
+      padding:100px 32px 40px;
+      position:relative;z-index:1;
+    }
+    section{margin-bottom:72px}
 
     .card{
-      background:var(--bg-soft);
+      background:var(--bg-card);
       border:1px solid var(--border);
       border-radius:var(--radius);
-      padding:28px;
+      padding:32px;
+      transition:border-color .35s ease,box-shadow .35s ease,background .35s ease;
+    }
+    .card:hover{
+      border-color:var(--border-hover);
+      box-shadow:0 0 60px -20px var(--glow);
+      background:var(--bg-card-hover);
     }
 
     /* Hero */
-    .hero h1{
-      font-family:'Playfair Display', serif;
-      font-size:clamp(1.8rem,3.5vw,2.6rem);
-      margin:0 0 12px;
+    .hero{margin-bottom:80px}
+    .hero .card{padding:48px 44px;position:relative;overflow:hidden}
+    .hero .card::before{
+      content:'';position:absolute;top:-1px;right:-1px;
+      width:180px;height:180px;
+      background:radial-gradient(circle at top right,rgba(255,255,255,0.03),transparent 70%);
+      pointer-events:none;
     }
-    .hero .name{border-bottom:2px solid var(--accent);padding-bottom:2px}
-    .lead{color:var(--muted);max-width:720px}
+    .hero h1{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(2rem,4.2vw,3rem);
+      font-weight:700;line-height:1.2;
+      margin:0 0 20px;letter-spacing:-.3px;
+    }
+    .hero .name{
+      background:linear-gradient(135deg,var(--text) 40%,var(--accent-warm));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .lead{color:var(--text-dim);max-width:680px;font-size:.98rem;line-height:1.85}
 
-    .meta{margin-top:18px;display:flex;gap:16px;flex-wrap:wrap}
-    .tag{border:1px solid var(--border);padding:6px 12px;border-radius:999px;font-size:.85rem;color:var(--muted)}
+    .meta{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap}
+    .tag{
+      border:1px solid var(--border);padding:7px 16px;border-radius:999px;
+      font-size:.8rem;color:var(--text-faint);font-weight:500;
+      transition:all .25s ease;letter-spacing:.2px;
+    }
+    .tag:hover{border-color:var(--border-hover);color:var(--text-dim);background:rgba(255,255,255,0.02)}
 
     /* Two column */
-    .grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+    .grid{display:grid;grid-template-columns:5fr 3fr;gap:20px}
 
     h2{
-      font-family:'Playfair Display', serif;
-      font-size:1.4rem;
-      margin:0 0 14px;
+      font-family:'Playfair Display',serif;
+      font-size:1.35rem;font-weight:600;
+      margin:0 0 16px;letter-spacing:-.2px;
     }
-    h3{margin:18px 0 8px;font-size:1rem}
-    p{margin:0 0 12px}
-    ul{margin:0 0 12px 18px;color:var(--muted)}
+    h3{
+      margin:22px 0 10px;font-size:.95rem;font-weight:600;
+      color:var(--text-dim);letter-spacing:.3px;text-transform:uppercase;
+      font-family:Inter,system-ui;
+    }
+    p{margin:0 0 14px;color:var(--text-dim);font-size:.95rem}
+    ul{margin:0 0 14px 20px;color:var(--text-dim);font-size:.95rem}
+    li{margin-bottom:4px}
 
     /* Skills */
-    .skill{display:flex;justify-content:space-between;border-bottom:1px solid var(--border);padding:8px 0}
+    .skill{
+      display:flex;justify-content:space-between;align-items:center;
+      border-bottom:1px solid var(--border);padding:12px 0;
+    }
+    .skill:last-child{border-bottom:none}
+    .skill span{font-size:.9rem;color:var(--text-dim)}
+    .skill-level{
+      display:flex;align-items:center;gap:10px;
+    }
+    .skill-bar{
+      width:64px;height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;
+    }
+    .skill-fill{height:100%;border-radius:2px;background:var(--accent);transition:width 1s cubic-bezier(.16,1,.3,1);width:0}
+    .skill-fill.visible{width:var(--w)}
+    .skill strong{font-size:.78rem;font-weight:500;color:var(--text-faint);min-width:72px;text-align:right}
 
     /* Projects */
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .project h4{margin:0 0 6px;font-size:1rem}
-    .project p{color:var(--muted);font-size:.95rem}
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .project{display:flex;flex-direction:column;gap:12px}
+    .project-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+    .project h4{margin:0;font-size:1rem;font-weight:600;line-height:1.4}
+    .project-badge{
+      flex-shrink:0;font-size:.7rem;font-weight:600;text-transform:uppercase;
+      letter-spacing:.8px;padding:4px 10px;border-radius:6px;
+      background:rgba(255,255,255,0.04);color:var(--text-faint);
+      border:1px solid var(--border);white-space:nowrap;
+    }
+    .project-badge.gold{color:#c9a96e;border-color:rgba(201,169,110,0.2);background:rgba(201,169,110,0.06)}
+    .project-badge.silver{color:#a8b4c0;border-color:rgba(168,180,192,0.2);background:rgba(168,180,192,0.06)}
+    .project p{color:var(--text-faint);font-size:.9rem;line-height:1.7;flex:1}
+    .project-link{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:.85rem;font-weight:500;color:var(--text-dim);
+      text-decoration:none;transition:color .2s ease;margin-top:4px;
+    }
+    .project-link:hover{color:var(--text)}
+    .project-link svg{width:14px;height:14px;transition:transform .2s ease}
+    .project-link:hover svg{transform:translateX(3px)}
 
     /* Contact */
-    a{color:var(--accent)}
-    a:hover{text-decoration:underline}
+    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+    .contact-item{
+      display:flex;align-items:center;gap:14px;
+      padding:20px 24px;
+    }
+    .contact-icon{
+      width:40px;height:40px;border-radius:10px;
+      background:rgba(255,255,255,0.03);border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    }
+    .contact-icon svg{width:18px;height:18px;color:var(--text-faint)}
+    .contact-label{font-size:.75rem;color:var(--text-faint);font-weight:500;text-transform:uppercase;letter-spacing:.5px}
+    .contact-value{font-size:.95rem;color:var(--text);margin-top:2px}
+    .contact-value a{color:var(--text);text-decoration:none;transition:color .2s ease}
+    .contact-value a:hover{color:var(--accent-warm)}
+
+    /* Divider */
+    .section-label{
+      display:flex;align-items:center;gap:16px;margin-bottom:24px;
+    }
+    .section-label span{
+      font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;
+      color:var(--text-faint);white-space:nowrap;
+    }
+    .section-label::after{
+      content:'';flex:1;height:1px;background:var(--border);
+    }
 
     footer{
       border-top:1px solid var(--border);
-      margin-top:60px;
-      padding:24px;
-      text-align:center;
-      color:var(--muted);
-      font-size:.9rem;
+      margin-top:40px;padding:28px 32px;
+      text-align:center;color:var(--text-faint);font-size:.82rem;
+      position:relative;z-index:1;
     }
+    footer a{color:var(--text-dim);text-decoration:none}
+    footer a:hover{color:var(--text)}
 
-    @media(max-width:900px){.grid{grid-template-columns:1fr}}
+    @media(max-width:900px){
+      .grid{grid-template-columns:1fr}
+      .hero .card{padding:32px 28px}
+      main{padding:88px 20px 32px}
+    }
+    @media(max-width:600px){
+      nav{display:none}
+      .projects{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
 
+<div class="ambient"></div>
+
 <header>
   <div class="nav">
     <div class="brand">Parsa Safaie</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
 </header>
 
 <main>
 
   <section class="hero">
-    <div class="card">
+    <div class="card reveal">
       <h1>Hello, I'm <span class="name">Parsa Safaie</span></h1>
       <p class="lead">
-        I am a 16-year-old student, born in France and raised in Iran, currently studying Mathematics and Physics.
+        I am a 17-year-old student, born in France and raised in Iran, currently studying Mathematics and Physics.
         I have been programming since the age of 11, with a primary focus on backend development, computer vision,
         and applied artificial intelligence.
       </p>
@@ -123,29 +273,28 @@
         <div class="tag">Computer Vision</div>
         <div class="tag">Machine Learning</div>
         <div class="tag">Backend Engineering</div>
-        <div class="tag">Khwarazmi Festival Awardee</div>
       </div>
     </div>
   </section>
 
   <section class="grid" id="about">
-    <div class="card">
+    <div class="card reveal">
       <h2>Profile</h2>
       <p>
         I work on projects that combine solid software engineering principles with practical machine learning.
-        My main interests lie in designing clean backend architectures, train lightweight machine learning models,
+        My main interests lie in designing clean backend architectures, training lightweight machine learning models,
         and applying computer vision techniques to real-world problems.
       </p>
 
       <h3>Core Competencies</h3>
       <ul>
-        <li>Backend development with Python (API design, databases, deployment).</li>
+        <li>Backend development with Python — API design, databases, deployment.</li>
         <li>Image processing and computer vision using Python.</li>
         <li>Training and evaluating lightweight machine learning models.</li>
         <li>Basic knowledge of software security and data privacy principles.</li>
       </ul>
 
-      <h3>Academic & Professional Goals</h3>
+      <h3>Academic &amp; Professional Goals</h3>
       <p>
         My short-term goal is to deepen my expertise in computer vision and backend systems
         through competitive and academic projects.
@@ -154,63 +303,156 @@
       </p>
     </div>
 
-    <aside class="card">
+    <aside class="card reveal d1">
       <h2>Skills</h2>
-      <div class="skill"><span>Python</span><strong>Advanced</strong></div>
-      <div class="skill"><span>Machine Learning</span><strong>Intermediate</strong></div>
-            <div class="skill"><span>Computer Vision</span><strong>Intermediate</strong></div>
-      <div class="skill"><span>HTML / CSS / JavaScript</span><strong>Intermediate</strong></div>
-      <div class="skill"><span>C / C++</span><strong>Familiar</strong></div>
+      <div class="skill">
+        <span>Python</span>
+        <div class="skill-level">
+          <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
+          <strong>Advanced</strong>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Machine Learning</span>
+        <div class="skill-level">
+          <div class="skill-bar"><div class="skill-fill" style="--w:60%"></div></div>
+          <strong>Intermediate</strong>
+        </div>
+      </div>
+      <div class="skill">
+        <span>Computer Vision</span>
+        <div class="skill-level">
+          <div class="skill-bar"><div class="skill-fill" style="--w:58%"></div></div>
+          <strong>Intermediate</strong>
+        </div>
+      </div>
+      <div class="skill">
+        <span>HTML / CSS / JS</span>
+        <div class="skill-level">
+          <div class="skill-bar"><div class="skill-fill" style="--w:52%"></div></div>
+          <strong>Intermediate</strong>
+        </div>
+      </div>
+      <div class="skill">
+        <span>C / C++</span>
+        <div class="skill-level">
+          <div class="skill-bar"><div class="skill-fill" style="--w:28%"></div></div>
+          <strong>Familiar</strong>
+        </div>
+      </div>
     </aside>
   </section>
 
   <section id="projects">
-    <h2>Projects & Achievements</h2>
+    <div class="section-label reveal"><span>Projects &amp; Achievements</span></div>
     <div class="projects">
-      <div class="card project">
-        <h4>BUFFET — Smart Cafeteria System</h4>
+
+      <div class="card project reveal d1">
+        <div class="project-header">
+          <h4>BUFFET</h4>
+          <div class="project-badge gold">2nd Place</div>
+        </div>
         <p>
           National 2nd Place, Khwarazmi Youth Festival.
-          A backend-driven system for automating cafeteria operations,
-          including inventory management, ordering, and reporting.
-          <br><a href="https://github.com/BuffetProgram/Buffet" target="_blank">View on GitHub</a>
+          A backend-driven system for automating cafeteria operations —
+          inventory management, ordering, and reporting.
         </p>
+        <a href="https://github.com/BuffetProgram/Buffet" target="_blank" class="project-link">
+          View on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
 
-      <div class="card project">
-        <h4>SEPAD — Student Focus Analysis System</h4>
+      <div class="card project reveal d2">
+        <div class="project-header">
+          <h4>SEPAD</h4>
+          <div class="project-badge silver">Honorable Mention</div>
+        </div>
         <p>
-          Honorable Mention, Khwarazmi Youth Festival.
-          A computer vision–based tool for analyzing student focus during online classes,
-          designed with privacy-preserving local processing.
-          <br><a href="https://github.com/SEPAD-Project" target="_blank">View on GitHub</a>
+          Honorable Mention, Khwarazmi Young Festival.
+          A computer vision tool for analyzing student focus during online classes,
+          with privacy-preserving local processing.
         </p>
+        <a href="https://github.com/SEPAD-Project" target="_blank" class="project-link">
+          View on GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
 
-      <div class="card project">
-        <h4>Independent Experiments</h4>
+      <div class="card project reveal d3">
+        <div class="project-header">
+          <h4>Independent Experiments</h4>
+          <div class="project-badge">Ongoing</div>
+        </div>
         <p>
           A collection of small-scale projects and experiments in image processing,
-          machine learning, and backend utilities available on my GitHub profile.
+          machine learning, and backend utilities.
         </p>
+        <a href="https://github.com/parsasafaie" target="_blank" class="project-link">
+          Browse GitHub
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
+
     </div>
   </section>
 
   <section id="contact">
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:parsasafaie.2568@proton.me">parsasafaie.2568@proton.me</a></p>
-      <p>GitHub: <a href="https://github.com/parsasafaie" target="_blank">github.com/parsasafaie</a></p>
-      <p>Telegram: <a href="https://t.me/parsasafaie" target="_blank">@parsasafaie</a></p>
+    <div class="section-label reveal"><span>Contact</span></div>
+    <div class="contact-grid">
+
+      <div class="card contact-item reveal d1">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:parsasafaie.2568@proton.me">parsasafaie.2568@proton.me</a></div>
+        </div>
+      </div>
+
+      <div class="card contact-item reveal d2">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value"><a href="https://github.com/parsasafaie" target="_blank">github.com/parsasafaie</a></div>
+        </div>
+      </div>
+
+      <div class="card contact-item reveal d3">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.855.075 1.644.358 1.914.234.223.475.352.628.43.46.244 1.042.43 1.583.592.542.163 1.183.33 1.755.464l.163.04c.508.12 1.066.256 1.536.403.912.293 1.944.754 2.68 1.627.736.873.996 1.925 1.09 2.86.047.47.09.992.13 1.483l.012.154c.069.835.137 1.636.252 2.28.057.323.13.637.243.916.11.27.29.582.603.812.53.384 1.133.355 1.603.206.47-.15.876-.428 1.224-.733a8.81 8.81 0 0 0 1.467-1.66l.01-.013 4.324-6.08a2.245 2.245 0 0 0 .357-1.81 2.24 2.24 0 0 0-1.143-1.434l-1.35-.673a.75.75 0 0 1-.393-.56v-.001a.75.75 0 0 1 .232-.634l.06-.054a2.242 2.242 0 0 0 .637-2.14 2.24 2.24 0 0 0-1.428-1.584l-2.847-1.13a.75.75 0 0 1-.447-.562l-.004-.021a.75.75 0 0 1 .237-.647l.076-.066a2.242 2.242 0 0 0 .658-2.108 2.24 2.24 0 0 0-1.415-1.558l-2.394-.937a2.243 2.243 0 0 0-.826-.134Z"/></svg>
+        </div>
+        <div>
+          <div class="contact-label">Telegram</div>
+          <div class="contact-value"><a href="https://t.me/parsasafaie" target="_blank">@parsasafaie</a></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
 </main>
 
 <footer>
-  &copy; 2025 Parsa Safaie
+  &copy; 2026 Parsa Safaie
 </footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Trigger skill bars inside this element
+        e.target.querySelectorAll('.skill-fill').forEach(bar => bar.classList.add('visible'));
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
